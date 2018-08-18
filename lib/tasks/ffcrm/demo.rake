@@ -7,6 +7,13 @@
 #------------------------------------------------------------------------------
 namespace :ffcrm do
   namespace :demo do
+    desc 'Load demo data once'
+    task load_once: :environment do
+      unless User.count > 1 # ie, more than just the admin user exists
+        Rake::Task['ffcrm:demo:load'].invoke
+      end
+    end
+
     desc "Load demo data"
     task load: :environment do
       # Load fixtures

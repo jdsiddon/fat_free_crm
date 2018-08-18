@@ -40,11 +40,20 @@ if defined?(FatFreeCRM::Application)
     # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
     # config.force_ssl = true
 
+    # Use default logging formatter so that PID and timestamp are not suppressed.
+    config.log_formatter = ::Logger::Formatter.new
+
     # See everything in the log (default is :info)
     config.log_level = :info
 
     # Use a different logger for distributed setups
     # config.logger = SyslogLogger.new
+
+    if ENV['RAILS_LOG_TO_STDOUT'].present?
+      logger           = ActiveSupport::Logger.new(STDOUT)
+      logger.formatter = config.log_formatter
+      config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    end
 
     # Use a different cache store in production
     # config.cache_store = :mem_cache_store
