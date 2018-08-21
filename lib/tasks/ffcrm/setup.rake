@@ -85,4 +85,12 @@ namespace :ffcrm do
       puts "Admin user has been created."
     end
   end
+
+  desc "Confirm accounts for all users"
+  task confirm: :environment do
+    User.find_each do |user|
+      user.skip_confirmation!
+      user.update_attribute(:confirmed_at, Time.now.utc) # Skip confirmation
+    end
+  end
 end
