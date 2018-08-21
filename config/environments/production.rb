@@ -73,5 +73,7 @@ if defined?(FatFreeCRM::Application)
 
     # Do not dump schema after migrations.
     config.active_record.dump_schema_after_migration = false
+
+    config.action_mailer.default_url_options = { host: 'production-alb-openjobs-774841607.us-east-1.elb.amazonaws.com' }
   end
 end
