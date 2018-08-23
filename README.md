@@ -10,6 +10,7 @@
 [crm-wiki]: http://en.wikipedia.org/wiki/Customer_relationship_management
 
 
+
 Out of the box it features group collaboration, campaign and lead management,
 contact lists, and opportunity tracking.
 
